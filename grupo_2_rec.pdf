@@ -1,0 +1,82 @@
+/*
+grupo_2_rec.pdf*/
+
+drop database prato;
+create database pizzaria;
+use pizzaria;
+
+create table prato(
+	id int not null auto_increment, primary key(id),
+    nome varchar(255) not null, 
+    descricao varchar(255) not null,
+    preco decimal not null
+);
+
+create table cliente(
+	id int not null auto_increment, primary key(id),
+    nome varchar(255) not null, 
+    telefone varchar(10) not null,
+    email varchar(255) not null
+);
+
+create table pedido(
+	id int not null auto_increment, primary key(id),
+    cliente_id varchar(255) not null, 
+    data_pedido varchar(255) not null,
+    status_pedido varchar (255)
+);
+
+create table item_pedido(
+	id int not null auto_increment, primary key(id),
+    pedido_id varchar(255) not null, 
+    prato_id varchar(255) not null,
+    quantidade int not null
+);
+
+create table mesa(
+	id int not null auto_increment, primary key(id),
+    numero int not null, 
+    capacidade int not null
+);
+
+insert into prato (nome, descricao, preco) values ("Pizza Margherita","Pizza com tomate,
+manjericão e mussarela", 40.00 );
+
+/*delete from prato where id = 1;*/
+
+insert into cliente (nome, telefone, email) values ("João","123456789", "joao@example.com");
+
+insert into pedido (cliente_id, data_pedido, status_pedido) values ("1","atual","Aberto");
+
+insert into item_pedido (pedido_id, prato_id, quantidade) values ("1","1",2);
+
+insert into mesa (numero, capacidade) values (5,4);
+
+update prato set preco = 45.00 where id = 2;
+
+update pedido set status_pedido = "Concluído" where id = 1;
+
+select * from prato;
+
+select * from  cliente;
+
+select cliente_id from pedido where cliente_id = '1';
+
+select pedido_id from item_pedido  where pedido_id = '1';
+
+select * from prato where preco > 30.00; 
+
+select * from pedido inner join cliente where pedido.cliente_id = cliente_id ;
+
+
+select * from cliente where nome = 'J';
+
+
+insert into prato (nome,descricao, preco) values ("sushi","sushi de cenoura", 50.00);
+
+insert into clinte (nome,descricao, preco) values ("Maria","sushi de cenoura", 50.00);
+
+
+
+ 
+
